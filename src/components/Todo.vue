@@ -1,6 +1,6 @@
 <template>
   <div class="todo-container">
-      <input class="todo-input-field" v-model="state.description" type="text" placeholder="Add Todo" @change="$emit('desc', state.description)"/>
+      <input class="todo-input-field" v-model="state.description" type="text" placeholder="Add Todo" @change="$emit('desc', state.description, clearInputField)"/>
       <ul class="todo-content">
         <li v-for="todo in todos" :key="todo.id">
           <div class="todo">
@@ -48,8 +48,13 @@ import { reactive } from '@vue/composition-api'
         description: ''
       })
 
+      function clearInputField () {
+        state.description = ''
+      }
+
       return {
-        state
+        state,
+        clearInputField
       }
     }
   }

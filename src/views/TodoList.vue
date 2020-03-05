@@ -48,13 +48,13 @@ export default {
       setTodoId: computed(() => state.todos.length + 1)
     })
 
-    function saveTodo (description) {
+    function saveTodo (description, clearField) {
       const todo = {
         id: state.setTodoId,
         description: description,
         completed: false
       }
-      state.description = ''
+      clearField()
       state.todos.push(todo)
     }
 
